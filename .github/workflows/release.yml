@@ -8,6 +8,8 @@ jobs:
   check_version:
     name: Check version
     runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.check.outputs.version }}
 
     steps:
     - name: Checkout code
@@ -59,8 +61,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.event.head_commit.message }}
-          release_name: Release ${{ github.ref }}
+          tag_name: ${{ needs.check_version.outputs.version }}
+          release_name: Release ${{ needs.check_version.outputs.version }}
           body: |
             Changes in this Release
             - First Change
