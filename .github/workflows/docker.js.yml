@@ -20,15 +20,13 @@ jobs:
 
     - name: Exit when unchanged
       if: steps.check.outputs.changed == 'false'
-      run: |
-        echo "No version change"
-        exit 1
+    -  run: echo "No version change"
+    -  run: exit 1
 
     - name: Exit when not found
       if: steps.check.outputs.changed == ''
-      run: '|
-      echo "No version change"
-      exit 1'
+    - run: echo "No version change"
+    - run: exit 1
 
   build:
     needs: check_version
