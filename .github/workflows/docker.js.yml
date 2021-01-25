@@ -19,14 +19,9 @@ jobs:
         diff-search: true
 
     - name: Exit when unchanged
-    - run: echo "No version change"
-    - run: exit 1
       if: steps.check.outputs.changed == 'false'
-
-    - name: Exit when not found
     - run: echo "No version change"
     - run: exit 1
-      if: steps.check.outputs.changed == ''
 
   build:
     needs: check_version
