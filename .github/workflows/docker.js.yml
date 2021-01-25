@@ -27,6 +27,7 @@ jobs:
       run: 'echo "No version change :/"'
 
   push_to_registry:
+    needs: check_version
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
 
@@ -42,6 +43,7 @@ jobs:
           tag_with_ref: true
 
   build:
+    needs: check_version
     name: Create Release
     runs-on: ubuntu-latest
     steps:
