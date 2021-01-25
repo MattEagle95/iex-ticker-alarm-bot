@@ -18,9 +18,17 @@ jobs:
       with:
         diff-search: true
 
-    - name: Exit if unchanged
+    - name: Log when changed
+      if: steps.check.outputs.changed == 'true'
+      run: 'echo "Version change found in commit ${{ steps.check.outputs.commit }}! New version: ${{ steps.check.outputs.version }} (${{ steps.check.outputs.type }})"'
+
+    - name: Log when unchanged
       if: steps.check.outputs.changed == 'false'
-      run: 'exit 0'
+      run: 'echo "No version change :/"'
+
+    - name: Log when unchanged
+      if: steps.check.outputs.changed == 'false'
+      run: 'exit 1'
 
   push_to_registry:
     needs: check_version
@@ -39,9 +47,28 @@ jobs:
           tag_with_ref: true
 
   build:
-    needs: check_version
     name: Create Release
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: npm ci
+    - run: npm run build --if-present
+    - run: npm test
+
+  release:
+    needs: build
+    name: Create Release
+    runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
