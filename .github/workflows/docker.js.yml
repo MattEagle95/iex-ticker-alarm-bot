@@ -18,7 +18,7 @@ jobs:
       with:
         diff-search: true
 
-    - name: Log when changed
+    - name: Exit if unchanged
       if: steps.check.outputs.changed == 'false'
       run: 'exit 0'
 
