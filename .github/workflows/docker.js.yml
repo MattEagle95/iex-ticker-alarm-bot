@@ -27,7 +27,7 @@ jobs:
       run: 'echo "No version change :/"'
 
     - name: Log when unchanged
-      if: steps.check.outputs.changed == undefined
+      if: steps.check.outputs.changed == ''
       run: 'exit 1'
 
   push_to_registry:
