@@ -6,7 +6,7 @@ on:
 
 jobs:
   check_version:
-    name: Push Docker image to Docker Hub
+    name: Check version
     runs-on: ubuntu-latest
 
     steps:
@@ -19,12 +19,8 @@ jobs:
         diff-search: true
 
     - name: Log when changed
-      if: steps.check.outputs.changed == 'true'
-      run: 'echo "Version change found in commit ${{ steps.check.outputs.commit }}! New version: ${{ steps.check.outputs.version }} (${{ steps.check.outputs.type }})"'
-
-    - name: Log when unchanged
       if: steps.check.outputs.changed == 'false'
-      run: 'echo "No version change :/"'
+      run: 'exit 0'
 
   push_to_registry:
     needs: check_version
