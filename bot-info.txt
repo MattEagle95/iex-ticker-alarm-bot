@@ -1,0 +1,12 @@
+command-list
+
+price - Get the current price for a ticker or company name
+list - List and delete alarm notifications
+add - Add alarm notification
+togglemarkethours - Toggle notifications for market opening/closing
+about - about
+help - help
+
+description and about-text
+
+Set alarms for stocks and get notified when they reach a specific price.

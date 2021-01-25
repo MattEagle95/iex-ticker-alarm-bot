@@ -1,0 +1,19 @@
+{
+  "API": {
+    "DELAY": 300000,
+    "URL": "https://api.iextrading.com/1.0/tops/last",
+    "SYSTEM_HOURS_URL": "https://ws-api.iextrading.com/1.0/deep"
+  },
+  "API_CRYPTO": {
+    "DELAY": 900000,
+    "URL": "https://api.coingecko.com/api/v3/simple/price"
+  },
+  "TELEGRAM": {
+    "BOT_TOKEN": "1424775543:AAGoW9SMdJwshmCvQ-sdGmBDY3gWU1LO2e0"
+  },
+  "LOG": {
+    "DIR": "../logs",
+    "FILENAME": "ticker-alarm.log",
+    "FILENAME_ERROR": "ticker-alarm-error.log"
+  }
+}

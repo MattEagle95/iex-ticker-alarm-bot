@@ -1,0 +1,52 @@
+[
+  {
+    "id": "bitcoin",
+    "symbol": "btc",
+    "name": "Bitcoin"
+  },
+  {
+    "id": "ethereum",
+    "symbol": "eth",
+    "name": "Ethereum"
+  },
+  {
+    "id": "litecoin",
+    "symbol": "ltc",
+    "name": "Litecoin"
+  },
+  {
+    "id": "tether",
+    "symbol": "usdt",
+    "name": "Tether"
+  },
+  {
+    "id": "ripple",
+    "symbol": "xrp",
+    "name": "XRP"
+  },
+  {
+    "id": "bitcoin-cash",
+    "symbol": "bch",
+    "name": "Bitcoin Cash"
+  },
+  {
+    "id": "monero",
+    "symbol": "xmr",
+    "name": "Monero"
+  },
+  {
+    "id": "eos",
+    "symbol": "eos",
+    "name": "EOS"
+  },
+  {
+    "id": "tron",
+    "symbol": "trx",
+    "name": "TRON"
+  },
+  {
+    "id": "dogecoin",
+    "symbol": "doge",
+    "name": "Dogecoin"
+  }
+]
