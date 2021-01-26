@@ -45,11 +45,9 @@ jobs:
     needs: build
     name: Create Release
     runs-on: ubuntu-latest
+    if: needs.build.outputs.version != ''
 
     steps:
-      - name: Exit when version unchanged
-        if: needs.build.outputs.version == ''
-        run: exit 0
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Create Release
@@ -67,11 +65,9 @@ jobs:
     needs: build
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
+    if: needs.build.outputs.version != ''
 
     steps:
-      - name: Exit when version unchanged
-        if: needs.build.outputs.version == ''
-        run: exit 0
       - name: Check out the repo
         uses: actions/checkout@v2
       - name: Push to Docker Hub
