@@ -67,13 +67,13 @@ jobs:
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
+      - name: Login to GitHub Packages Docker Registry
+        uses: docker/login-action@v1
+        with:
+          registry: docker.pkg.github.com
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Push to registry
         uses: docker/build-push-action@v2
         with:
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-          registry: docker.pkg.github.com
-          repository: ${{ github.repository }}/iex-ticker-alarm-bot
-          tags: v${{ needs.check_version.outputs.version }}
-          tag_with_sha: true
-          tag_with_ref: true
+          tags: matteagle95/${{ github.repository }}:${{ needs.check_version.outputs.version }}
