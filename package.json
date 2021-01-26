@@ -1,6 +1,6 @@
 {
   "name": "iex-ticker-alarm-bot",
-  "version": "1.0.30",
+  "version": "1.0.31",
   "description": "a simple iex ticker alarm bot",
   "author": "Colin",
   "main": "src/app.js",
