@@ -1,7 +1,9 @@
-name: Node.js CI
+name: Build
 
 on:
   push:
+    branches-ignore:
+      - "main"
   pull_request:
 
 jobs:
