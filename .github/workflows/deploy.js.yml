@@ -76,4 +76,4 @@ jobs:
       - name: Push to registry
         uses: docker/build-push-action@v2
         with:
-          tags: matteagle95/${{ github.repository }}:${{ needs.check_version.outputs.version }}
+          tags: ${{ github.repository }}:${{ needs.check_version.outputs.version }}
