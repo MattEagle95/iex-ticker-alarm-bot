@@ -73,7 +73,10 @@ jobs:
       - name: Push to Docker Hub
         uses: docker/build-push-action@v1
         with:
-          push: true
-          tags: ${{ needs.build.outputs.version }}
-          secrets: |
-            GIT_AUTH_TOKEN=${{ secrets.MYTOKEN }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          registry: docker.pkg.github.com
+          repository: ${{ github.repository }}/iex-ticker-alarm-bot
+          tag: v${{ needs.build.outputs.version }}
+          tag_with_sha: true
+          tag_with_ref: true
