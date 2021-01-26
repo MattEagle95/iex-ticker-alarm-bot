@@ -20,26 +20,26 @@ jobs:
         with:
           diff-search: true
 
-  build:
-    name: Build
-    runs-on: ubuntu-latest
+  # build:
+  #   name: Build
+  #   runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [14.x]
+  #   strategy:
+  #     matrix:
+  #       node-version: [14.x]
 
-    steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-      - run: npm ci
-      - run: npm run build --if-present
-      - run: npm test
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: Use Node.js ${{ matrix.node-version }}
+  #       uses: actions/setup-node@v1
+  #       with:
+  #         node-version: ${{ matrix.node-version }}
+  #     - run: npm ci
+  #     - run: npm run build --if-present
+  #     - run: npm test
 
   release:
-    needs: [build, check_version]
+    needs: [check_version]
     name: Create release tag
     runs-on: ubuntu-latest
     if: needs.check_version.outputs.version != ''
@@ -59,7 +59,7 @@ jobs:
           prerelease: false
 
   push_to_registry:
-    needs: [build, check_version]
+    needs: [check_version]
     name: Push docker image to registry
     runs-on: ubuntu-latest
     if: needs.check_version.outputs.version != ''
