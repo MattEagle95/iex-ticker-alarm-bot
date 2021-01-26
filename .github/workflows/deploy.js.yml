@@ -76,4 +76,5 @@ jobs:
       - name: Push to registry
         uses: docker/build-push-action@v2
         with:
+          push: true
           tags: iex-ticker-alarm-bot:${{ needs.check_version.outputs.version }}
