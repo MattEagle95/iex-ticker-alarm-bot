@@ -73,7 +73,7 @@ jobs:
       - name: Push to Docker Hub
         uses: docker/build-push-action@v1
         with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-          repository: qweqwertr/iex-ticker-alarm-bot
+          push: true
           tags: ${{ needs.build.outputs.version }}
+          secrets: |
+            GIT_AUTH_TOKEN=${{ secrets.MYTOKEN }}
